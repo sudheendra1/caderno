@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile">
+    tools:context=".profile"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="290dp"
         android:layout_height="171dp"
         android:text="this is the profile"
+        android:textColor="@color/black"
         android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,22 +53,28 @@
         app:layout_constraintGuide_begin="20dp" />
 
     <Button
-        android:id="@+id/logout1"
+        android:id="@+id/pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Retrievepdffile"
+        android:text="retrieve pdf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.602" />
+
+    <Button
+        android:id="@+id/log1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <Button
-        android:id="@+id/pdf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="retrieve pdf"
-        android:onClick="Retrievepdffile"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="512dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.827" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

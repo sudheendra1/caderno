@@ -13,13 +13,6 @@
         android:theme="@style/Theme.Caderno"
         tools:targetApi="31">
         <activity
-            android:name=".retrievepdf"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ran"
             android:exported="false">
             <meta-data

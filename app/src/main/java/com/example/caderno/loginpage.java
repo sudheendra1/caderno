@@ -86,7 +86,7 @@ public class loginpage extends AppCompatActivity {
                         if(task.isSuccessful()){
                             FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                             if(user.isEmailVerified()) {
-                               startActivity(new Intent(loginpage.this,profile.class));
+                                startActivity(new Intent(loginpage.this,profile.class));
                             } else{
                                 user.sendEmailVerification();
                                 Toast.makeText(loginpage.this,"check your email for verification!",Toast.LENGTH_SHORT).show();
