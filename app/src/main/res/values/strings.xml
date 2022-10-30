@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">caderno</string>
+    <string name="navigationopen">open navigation drawer</string>
+    <string name="navigationclose"> close navigation drawer</string>
+</resources>

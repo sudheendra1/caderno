@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "163911667495",
+    "project_id": "caderno-419a2",
+    "storage_bucket": "caderno-419a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163911667495:android:21005c8daa936b0fbfe302",
+        "android_client_info": {
+          "package_name": "com.example.caderno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163911667495-5vba3t14h54rc7ak4n82uoj7c1umjp70.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGgHgwtOjd6a2iY4-BPSYOdkRC4S_bilc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163911667495-5vba3t14h54rc7ak4n82uoj7c1umjp70.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
