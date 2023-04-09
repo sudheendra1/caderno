@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:id="@+id/refreshpullmatrices">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".matrices"
+    android:background="@color/app"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/totalquestions1"
+        android:text="Total Questions:"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        />
+
+    <TextView
+        android:id="@+id/em_quiz1_q1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="question 1"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_above="@id/answers1em4"
+        android:textAlignment="center"
+        android:layout_margin="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/answers1em4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+        
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/black"
+            android:text="ans a"
+            android:textColor="@color/white"
+            android:id="@+id/em_quiz1_q1_ansa"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/black"
+            android:text="ans b"
+            android:textColor="@color/white"
+            android:id="@+id/em_quiz1_q1_ansb"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/black"
+            android:text="ans c"
+            android:textColor="@color/white"
+            android:id="@+id/em_quiz1_q1_ansc"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/black"
+            android:text="ans d"
+            android:textColor="@color/white"
+            android:id="@+id/em_quiz1_q1_ansd"
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/em_quiz1_q1_submit"
+        android:text="Submit"
+        android:layout_below="@id/answers1em4"
+        android:layout_marginTop="45dp"/>
+
+</RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -2,4 +2,7 @@
     <string name="app_name">caderno</string>
     <string name="navigationopen">open navigation drawer</string>
     <string name="navigationclose"> close navigation drawer</string>
+    <string name="welcomemsg"> Welcome %s to caderno</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

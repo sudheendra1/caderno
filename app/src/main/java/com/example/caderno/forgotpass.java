@@ -2,7 +2,9 @@ package com.example.caderno;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class forgotpass extends AppCompatActivity {
+    private SwipeRefreshLayout swipeRefreshLayout;
     private EditText emailid;
     private Button resetpass;
 
@@ -25,6 +28,7 @@ public class forgotpass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotpass);
+        Swipetorefresh();
         emailid=(EditText) findViewById(R.id.email);
         resetpass=(Button) findViewById(R.id.rp);
         auth=FirebaseAuth.getInstance();
@@ -63,5 +67,25 @@ public class forgotpass extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(forgotpass.this,loginpage.class));
+        getIntent().setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
+    }
+
+    private void Swipetorefresh() {
+        swipeRefreshLayout=findViewById(R.id.refreshpullforgotpass);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                startActivity(getIntent());
+                finish();
+                overridePendingTransition(0,0);
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light,android.R.color.holo_red_light);
     }
 }

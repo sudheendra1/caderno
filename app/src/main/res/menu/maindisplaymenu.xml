@@ -1,10 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<item android:id="@+id/profile"
-    android:title="profile"
-    app:showAsAction="never"/>
-    <item android:id="@+id/logout1"
-        android:title="logout"
-        app:showAsAction="never"/>
+    <group android:checkableBehavior="single">\
+
+
+
+
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item android:title="Questionares">
+
+            <menu>
+                <item android:id="@+id/quiz_nav"
+                    android:title="Quizlets"
+                    android:icon="@drawable/ic_baseline_quiz_24"
+                    app:showAsAction="never"/>
+
+                <item android:id="@+id/papers_nav"
+                    android:title="Previous Year Papers"
+                    android:icon="@drawable/ic_baseline_question_answer_24"
+                    app:showAsAction="never"/>
+
+            </menu>
+        </item>
+
+
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item android:title="Notes">
+            <menu>
+                <item android:id="@+id/upload_own_notes_nav"
+                    android:title="Upload Notes For SelfView"
+                    android:icon="@drawable/ic_baseline_picture_as_pdf_24"
+                    app:showAsAction="never"/>
+                <item android:id="@+id/View_own_notes_nav"
+                    android:title="View Self Notes"
+                    android:icon="@drawable/ic_baseline_picture_as_pdf_24"
+                    app:showAsAction="never"/>
+
+                <item android:id="@+id/upload_all_notes_nav"
+                    android:title="Share Notes With Everybody"
+                    android:icon="@drawable/ic_baseline_picture_as_pdf_24"
+                    app:showAsAction="never"/>
+
+                <item android:id="@+id/View_all_notes_nav"
+                    android:title="View All Notes"
+                    android:icon="@drawable/ic_baseline_picture_as_pdf_24"
+                    app:showAsAction="never"/>
+
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item android:title="Profile">
+            <menu>
+                <item android:id="@+id/myprofilenav"
+                    android:title="My Profile"
+                    android:icon="@drawable/ic_baseline_person_outline_24"
+                    app:showAsAction="never"/>
+
+
+                <item android:id="@+id/delete_user_nav"
+                    android:title="Delete User"
+                    android:icon="@drawable/ic_baseline_delete_24"
+                    app:showAsAction="never"/>
+
+                <item android:id="@+id/logout_nav"
+                    android:title="Logout"
+                    android:icon="@drawable/ic_baseline_logout_24"
+                    app:showAsAction="never"/>
+
+            </menu>
+        </item>
+    </group>
+
+
+
+
+
+
 </menu>

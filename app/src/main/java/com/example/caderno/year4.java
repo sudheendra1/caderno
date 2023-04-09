@@ -43,4 +43,8 @@ public class year4 extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

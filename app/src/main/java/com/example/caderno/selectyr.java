@@ -44,4 +44,8 @@ public class selectyr extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }
