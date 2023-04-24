@@ -7,6 +7,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +28,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -39,14 +43,17 @@ public class sidgnuppage extends AppCompatActivity{
     private RadioGroup radiogroupyear,radiogroupbranch;
     private RadioButton radioselectedyear,radioselectedbranch;
     private DatePickerDialog picker;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databasereference1;
     String name,passw,em,year,branch,date,cp;
     ProgressBar pb;
+    private static final String TAG="check_email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sidgnuppage);
+
+
         pb=findViewById(R.id.signpb);
         mAuth = FirebaseAuth.getInstance();
         username1 = (EditText) findViewById(R.id.username3);
@@ -62,6 +69,13 @@ public class sidgnuppage extends AppCompatActivity{
          radiogroupbranch=findViewById(R.id.radio_grp_branch);
          radiogroupbranch.clearCheck();
 
+
+        pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        conpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+
+
+
          dob.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -73,7 +87,7 @@ public class sidgnuppage extends AppCompatActivity{
                  picker=new DatePickerDialog(sidgnuppage.this, new DatePickerDialog.OnDateSetListener() {
                      @Override
                      public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                         dob.setText(i +"/" +(i1+1)+ "/"+ i2);
+                         dob.setText(i2 +"/" +(i1+1)+ "/"+ i);
 
                      }
                  }, year1,month,day);
@@ -95,13 +109,30 @@ public class sidgnuppage extends AppCompatActivity{
                 switch (view.getId()) {
                     case R.id.signup1:
                         registeruser();
-                        startActivity(new Intent(sidgnuppage.this,loginpage.class));
+
                         break;
 
                 }
             }
 
-            private void registeruser() {
+            /*void checkEmailExistsOrNot(){
+                mAuth.fetchSignInMethodsForEmail(email.getText().toString()).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                        Log.d(TAG,""+task.getResult().getSignInMethods().size());
+                        if (task.getResult().getSignInMethods().size() == 0){
+                            registeruser();
+
+                        }else {
+                            Toast.makeText(sidgnuppage.this, "Email already exists", Toast.LENGTH_SHORT).show();
+                            email.getText().clear();
+                        }
+
+                    }
+                });
+            }*/
+
+            public void registeruser() {
                 int selectedyearid = radiogroupyear.getCheckedRadioButtonId();
                 radioselectedyear=findViewById(selectedyearid);
 
@@ -112,87 +143,121 @@ public class sidgnuppage extends AppCompatActivity{
                  em= email.getText().toString().trim();
                  date=dob.getText().toString().trim();
                  cp=conpass.getText().toString().trim();
-                if(name.isEmpty()){
+                 String[] split = em.split("@");
+                String domain= split[1];
+
+                if(TextUtils.isEmpty(name)){
+                    Toast.makeText(sidgnuppage.this, "Please enter a username", Toast.LENGTH_SHORT).show();
                     username1.setError("Full name is required");
                     username1.requestFocus();
                     return;
                 }
-                if(passw.isEmpty()){
+                else if(TextUtils.isEmpty(passw)){
+                    Toast.makeText(sidgnuppage.this, "Please enter a password", Toast.LENGTH_SHORT).show();
                     pass.setError("password is required");
                     pass.requestFocus();
                     return;
                 }
-                if(em.isEmpty()){
+                else if(TextUtils.isEmpty(em)){
+                    Toast.makeText(sidgnuppage.this, "Please enter your emailid", Toast.LENGTH_SHORT).show();
                     email.setError("email is required");
                     email.requestFocus();
                     return;
                 }
-                if(date.isEmpty()){
+                else if(TextUtils.isEmpty(date)){
+                    Toast.makeText(sidgnuppage.this, "Please enter your date of birth", Toast.LENGTH_SHORT).show();
                     dob.setError("date of birth is required");
                     dob.requestFocus();
                     return;
                 }
-                if(radiogroupyear.getCheckedRadioButtonId()==-1){
+                else if(radiogroupyear.getCheckedRadioButtonId()==-1){
                     Toast.makeText(sidgnuppage.this,"please select your year",Toast.LENGTH_SHORT).show();
-                    radioselectedyear.setError("year is required");
-                    radioselectedyear.requestFocus();
-                    return;
+                    /*radioselectedyear.setError("year is required");*/
+                    radiogroupyear.requestFocus();
+
                 }
-                if(radiogroupbranch.getCheckedRadioButtonId()==-1){
+                else if(radiogroupbranch.getCheckedRadioButtonId()==-1){
                     Toast.makeText(sidgnuppage.this,"please select your branch",Toast.LENGTH_SHORT).show();
-                    radioselectedbranch.setError("branch is required");
-                    radioselectedbranch.requestFocus();
-                    return;
+                   /* radioselectedbranch.setError("branch is required");*/
+                    radiogroupbranch.requestFocus();
+
                 }
-                if(!Patterns.EMAIL_ADDRESS.matcher(em).matches()){
+                else if(!Patterns.EMAIL_ADDRESS.matcher(em).matches()){
+                    Toast.makeText(sidgnuppage.this, "Please use a valid emailid", Toast.LENGTH_SHORT).show();
                     email.setError("please provide valid email!");
+
                     email.requestFocus();
+                    email.getText().clear();
                     return;
                 }
-                if(passw.length()<8){
-                    pass.setError("password should minimum 8 characters long");
+                else if(passw.length()<8){
+                    Toast.makeText(sidgnuppage.this, "Please enter a password of minimum 8 characters", Toast.LENGTH_SHORT).show();
+                    pass.setError("password should be minimum 8 characters long");
                     pass.requestFocus();
                     return;
                 }
-                if(cp.isEmpty()){
+                else if(TextUtils.isEmpty(cp)){
+                    Toast.makeText(sidgnuppage.this, "Please confirm your password first", Toast.LENGTH_SHORT).show();
                     conpass.setError("please confirm your password");
                     conpass.requestFocus();
                     return;
                 }
-                if(!cp.equals(passw)){
+                else if(!passw.equals(cp)){
                     Toast.makeText(sidgnuppage.this,"please type in the same password",Toast.LENGTH_SHORT).show();
                     conpass.setError("please confirm your password");
+
                     conpass.requestFocus();
-                    conpass.clearComposingText();
-                    pass.clearComposingText();
+                    conpass.getText().clear();
+                    pass.getText().clear();
+
                 }
+                else if(!domain.equals("eng.rizvi.edu.in")){
+                    Toast.makeText(sidgnuppage.this, "Please use the college emailid", Toast.LENGTH_SHORT).show();
 
-                year=radioselectedyear.getText().toString();
-                branch=radioselectedbranch.getText().toString();
-                pb.setVisibility(View.VISIBLE);
+                    email.setError("please use the college emailid");
 
-                mAuth.createUserWithEmailAndPassword(em,passw)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
+                    email.requestFocus();
+                    email.getText().clear();
+                    pb.setVisibility(View.GONE);
 
-                                    User user= new User(name,em,year,branch,date);
-                                    databaseReference= FirebaseDatabase.getInstance().getReference("user");
-                                    String id =FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                    databaseReference.child(id).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void unused) {
-                                            Toast.makeText(sidgnuppage.this,"registration successfull",Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                                    .addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(sidgnuppage.this,"registration failed Try agin!!", Toast.LENGTH_SHORT).show();
 
-                                                        }
-                                                    });
+                } else{
+
+                    pb.setVisibility(View.VISIBLE);
+                    year=radioselectedyear.getText().toString();
+                    branch=radioselectedbranch.getText().toString();
+
+
+                    mAuth.createUserWithEmailAndPassword(em,passw)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+
+
+
+                                        User user= new User(name,em,year,branch,date);
+                                        databaseReference= FirebaseDatabase.getInstance().getReference("user");
+                                        String id =FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                        databaseReference.child(id).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        Toast.makeText(sidgnuppage.this,"registration successfull",Toast.LENGTH_SHORT).show();
+                                                       Intent intent=new Intent(sidgnuppage.this,MainActivity.class);
+                                                        getIntent().setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                        finish();
+                                                        startActivity(intent);
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(sidgnuppage.this,"registration failed Try again!!", Toast.LENGTH_SHORT).show();
+                                                        pb.setVisibility(View.GONE);
+
+                                                    }
+                                                });
+
 
 
                                     /*FirebaseDatabase.getInstance().getReference("users").push().getKey().child((FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -211,11 +276,18 @@ public class sidgnuppage extends AppCompatActivity{
 
 
 
-                                } else{
-                                    Toast.makeText(sidgnuppage.this, "registration failed!! try again", Toast.LENGTH_LONG).show();
+                                    } else{
+                                        Toast.makeText(sidgnuppage.this, "registration failed!! try again", Toast.LENGTH_LONG).show();
+                                        pb.setVisibility(View.GONE);
+
+                                    }
                                 }
-                            }
-                        });
+                            });
+
+
+                }
+
+
             }
         });
 

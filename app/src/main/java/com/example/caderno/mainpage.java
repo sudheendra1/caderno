@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -52,6 +53,7 @@ public class mainpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
+
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference("user");
         userid= firebaseUser.getUid();
@@ -80,6 +82,8 @@ public class mainpage extends AppCompatActivity {
         navigationView=findViewById(R.id.nav_bar);
         toolbar=findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Home");
+
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigationopen,R.string.navigationclose);
         drawerLayout.addDrawerListener(toggle);
@@ -90,24 +94,42 @@ public class mainpage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if(id==R.id.quiz_nav){
-                    if(Objects.equals(year1, "Year1")){
+                    if(Objects.equals(year1, "First")){
                         startActivity(new Intent(mainpage.this,quiz_year1.class));
+                        Toast.makeText(mainpage.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                     }
-                    else if(Objects.equals(year1, "Year2")){
+                    else if(Objects.equals(year1, "Second")){
                         startActivity(new Intent(mainpage.this, daily_quiz.class));
                     }
-                    else if(Objects.equals(year1, "Year3")){
+                    else if(Objects.equals(year1, "Third")){
                         startActivity(new Intent(mainpage.this, quiz_year3.class));
+                        Toast.makeText(mainpage.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                     }
-                    else if(Objects.equals(year1, "Year4")){
+                    else if(Objects.equals(year1, "Fourth")){
                         startActivity(new Intent(mainpage.this, MainActivity2.class));
+                        Toast.makeText(mainpage.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         Toast.makeText(mainpage.this, "Something Went Wrong !! Sorry for The Inconvenience", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else if(id==R.id.papers_nav){
-                    startActivity(new Intent(mainpage.this,papers.class));
+                    if(Objects.equals(year1, "First")){
+                        startActivity(new Intent(mainpage.this,papers_year1.class));
+                    }
+                    else if(Objects.equals(year1, "Second")){
+                        startActivity(new Intent(mainpage.this, papers.class));
+                    }
+                    else if(Objects.equals(year1, "Third")){
+                        startActivity(new Intent(mainpage.this, papers_year3.class));
+                    }
+                    else if(Objects.equals(year1, "Fourth")){
+                        startActivity(new Intent(mainpage.this, papers_year4.class));
+                    }
+                    else{
+                        Toast.makeText(mainpage.this, "Something Went Wrong !! Sorry for The Inconvenience", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 else if(id==R.id.upload_own_notes_nav){
                     startActivity(new Intent(mainpage.this,upload_own_notes.class));
@@ -119,28 +141,82 @@ public class mainpage extends AppCompatActivity {
 
                 }
                 else if(id==R.id.upload_all_notes_nav){
-                    startActivity(new Intent(mainpage.this,upload_pdf.class));
+                    if(Objects.equals(year1, "First")){
+                        startActivity(new Intent(mainpage.this,up_pdf_y1.class));
+                    }
+                    else if(Objects.equals(year1, "Second")){
+                        startActivity(new Intent(mainpage.this, upload_pdf.class));
+                    }
+                    else if(Objects.equals(year1, "Third")){
+                        startActivity(new Intent(mainpage.this, up_pdf_y3.class));
+                    }
+                    else if(Objects.equals(year1, "Fourth")){
+                        startActivity(new Intent(mainpage.this, up_pdf_y4.class));
+                    }
+                    else{
+                        Toast.makeText(mainpage.this, "Something Went Wrong !! Sorry for The Inconvenience", Toast.LENGTH_SHORT).show();
+                    }
+
 
                 }
                 else if(id==R.id.View_all_notes_nav){
-                    startActivity(new Intent(mainpage.this,view_pdf.class));
+
+                    if(Objects.equals(year1, "First")){
+                        startActivity(new Intent(mainpage.this,view_pdf_y1.class));
+                    }
+                    else if(Objects.equals(year1, "Second")){
+                        startActivity(new Intent(mainpage.this, view_pdf.class));
+                    }
+                    else if(Objects.equals(year1, "Third")){
+                        startActivity(new Intent(mainpage.this, view_pdf_y3.class));
+                    }
+                    else if(Objects.equals(year1, "Fourth")){
+                        startActivity(new Intent(mainpage.this, view_pdf_y4.class));
+                    }
+                    else{
+                        Toast.makeText(mainpage.this, "Something Went Wrong !! Sorry for The Inconvenience", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+                else if(id==R.id.View_books){
+                    if(Objects.equals(year1, "First")){
+                        Toast.makeText(mainpage.this, "Coming soon", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(Objects.equals(year1, "Second")){
+                        startActivity(new Intent(mainpage.this,Textbooks.class));
+                    }
+                    else if(Objects.equals(year1, "Third")){
+                        Toast.makeText(mainpage.this, "Coming soon", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(Objects.equals(year1, "Fourth")){
+                        Toast.makeText(mainpage.this, "Coming soon", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(mainpage.this, "Something Went Wrong !! Sorry for The Inconvenience", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
                 else if(id==R.id.myprofilenav){
                     startActivity(new Intent(mainpage.this,profile.class));
 
                 }
-                else if(id==R.id.delete_user_nav){
-                    startActivity(new Intent(mainpage.this,delete_user.class));
 
-                }
                 else if(id==R.id.logout_nav){
+                    SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
+                    editor.putBoolean("islogin",false);
+                    editor.apply();
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(mainpage.this,MainActivity.class));
                     Toast.makeText(mainpage.this, "logged out succesfully", Toast.LENGTH_SHORT).show();
                     getIntent().setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     finish();
 
+                }
+                else if(id==R.id.Contact){
+                    startActivity(new Intent(mainpage.this,ContactUS.class));
+                    getIntent().setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    finish();
                 }
                 else{
                     Toast.makeText(mainpage.this, "something went wrong!!", Toast.LENGTH_SHORT).show();
@@ -159,54 +235,6 @@ public class mainpage extends AppCompatActivity {
 
 
 
-        retrieve = (TextView) findViewById(R.id.textup);
-        own = (TextView) findViewById(R.id.textup_own);
-        ret_own = (TextView) findViewById(R.id.textret_own);
-
-
-        retrieve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(mainpage.this, view_pdf.class));
-            }
-        });
-
-        own.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(mainpage.this, upload_own_notes.class));
-            }
-        });
-
-        ret_own.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(mainpage.this, ret_own_pdf.class));
-            }
-        });
-
-        DQ= (TextView) findViewById(R.id.textdq);
-    DQ.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-
-
-            if(Objects.equals(year1, "Year1")){
-                startActivity(new Intent(mainpage.this,quiz_year1.class));
-            }
-            else if(Objects.equals(year1, "Year2")){
-                startActivity(new Intent(mainpage.this, daily_quiz.class));
-            }
-            else if(Objects.equals(year1, "Year3")){
-                startActivity(new Intent(mainpage.this, quiz_year3.class));
-            }
-            else if(Objects.equals(year1, "Year4")){
-                startActivity(new Intent(mainpage.this, MainActivity2.class));
-            }
-            else{
-                Toast.makeText(mainpage.this, "Something Went Wrong !! Sorry for The Inconvenience", Toast.LENGTH_SHORT).show();
-            }
 
 
 
@@ -214,8 +242,9 @@ public class mainpage extends AppCompatActivity {
 
 
 
-        }
-    });
+
+
+
 
 
 

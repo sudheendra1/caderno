@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mainlayout"
-    android:visibility="gone"
-    tools:context=".MainActivity"
-    android:background="@drawable/login_page">
+    android:background="#121F30"
+
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/caderno"
@@ -15,24 +15,25 @@
         android:layout_height="252dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.308"
-        app:srcCompat="@drawable/cad" />
+        app:layout_constraintVertical_bias="0.578"
+        app:srcCompat="@drawable/whatsapp_image_2023_04_11_at_23_38_02" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="237dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="152dp"
-        android:background="@drawable/border"
+        android:layout_marginBottom="360dp"
+        android:background="@drawable/newborder"
         android:drawablePadding="10sp"
-        android:fontFamily="@font/alike_angular"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:gravity="center"
         android:outlineProvider="paddedBounds"
         android:text="LOGIN"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#F6C502"
+        android:textColor="#C9EEFF"
         android:textSize="32sp"
         app:drawableTint="#704141"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,24 +47,27 @@
         android:layout_marginTop="44dp"
         android:text="Dont have an account?"
         android:textColor="#5E5C5C"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.654" />
 
     <TextView
         android:id="@+id/whyudodis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Account"
-        android:textColor="#CEA40E"
+        android:textColor="@color/white"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.571" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

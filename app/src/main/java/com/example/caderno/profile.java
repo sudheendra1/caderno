@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -52,6 +53,7 @@ public class profile extends AppCompatActivity {
 
         toolbar=findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         Swipetorefresh();
 
 
@@ -84,7 +86,7 @@ public class profile extends AppCompatActivity {
 
 
         if(firebaseUser==null){
-            Toast.makeText(profile.this, "Something Went Wrong3 !! Sorry for The Inconvenience", Toast.LENGTH_LONG).show();
+            Toast.makeText(profile.this, "Something Went Wrong !! Sorry for The Inconvenience", Toast.LENGTH_LONG).show();
         }
         else{
             progressBar.setVisibility(View.VISIBLE);
@@ -133,6 +135,9 @@ golink("https://firebasestorage.googleapis.com/v0/b/caderno-419a2.appspot.com/o/
             startActivity(new Intent(profile.this, delete_user.class));
         }
         else if(id==R.id.menu_logout_p){
+            SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
+            editor.putBoolean("islogin",false);
+            editor.apply();
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(profile.this,MainActivity.class));
             Toast.makeText(profile.this, "logged out succesfully", Toast.LENGTH_SHORT).show();
@@ -206,11 +211,11 @@ golink("https://firebasestorage.googleapis.com/v0/b/caderno-419a2.appspot.com/o/
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvwelcome.setText("Welcome "+ name+" to Caderno");
+                        tvwelcome.setText(getString(R.string.welcomemsg,name));
                         tvname.setText(name);
                         tvemail.setText(em);
                         tvdob.setText(date);
-                        tvyear.setText(year1);
+                        tvyear.setText(getString(R.string.year,year1));
                         tvbranch.setText(branch1);
 
                         Uri uri =firebaseUser.getPhotoUrl();

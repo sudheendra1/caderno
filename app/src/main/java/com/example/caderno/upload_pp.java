@@ -52,7 +52,7 @@ public class upload_pp extends AppCompatActivity {
 
        mauth=FirebaseAuth.getInstance();
        firebaseUser=mauth.getCurrentUser();
-       storageReference= FirebaseStorage.getInstance().getReference("Diplay Pics");
+       storageReference= FirebaseStorage.getInstance().getReference("Display Pics");
        Uri uri=firebaseUser.getPhotoUrl();
         Picasso.with(upload_pp.this).load(uri).into(disp);
         selectimg.setOnClickListener(new View.OnClickListener() {

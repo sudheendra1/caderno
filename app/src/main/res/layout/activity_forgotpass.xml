@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     android:id="@+id/refreshpullforgotpass">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".forgotpass"
-    android:background="@drawable/pink_social_media_duotone_gradient_background_social_network_stories_soft_colorful_theme_rainbow_graphic_display_wallpaper_modern_vibrant_mobile_app_design_blending_bright_duo_colors_template_">
+    android:background="#144272">
 
     <EditText
         android:id="@+id/email"
         android:layout_width="306dp"
         android:layout_height="64dp"
         android:layout_margin="10dp"
-        android:background="#2AFFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:background="@drawable/border"
+        android:backgroundTint="#40FFFFFF"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="20dp"
         android:ems="10"
         android:hint="Email ID"
         android:inputType="textPersonName"
@@ -33,18 +33,24 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintVertical_bias="0.411" />
 
     <Button
         android:id="@+id/rp"
         android:layout_width="210dp"
         android:layout_height="72dp"
+        android:background="@drawable/mybutton3"
+        android:fontFamily="@font/josefin_sans_semibold"
         android:text="Reset Password"
+        android:textColor="#A5D7E8"
+        android:textSize="18dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.099" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

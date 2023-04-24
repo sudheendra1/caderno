@@ -1,10 +1,10 @@
 package com.example.caderno;
 
 public class ReadWriteUserDetails {
-    String fullname,emailid;
+    String emailid;
 
-    public ReadWriteUserDetails(String name, String em){
-        this.fullname = name;
+    public ReadWriteUserDetails( String em){
+
         this.emailid= em;
     }
 }

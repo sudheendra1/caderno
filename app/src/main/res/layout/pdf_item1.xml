@@ -23,13 +23,13 @@
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:layout_marginStart="6dp"
-            android:id="@+id/pdfimg1"/>
+            android:id="@+id/pdfimg_pap"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/pdftv1"
-            android:layout_toEndOf="@+id/pdfimg1"
+            android:layout_toEndOf="@+id/pdfimg_pap"
             android:layout_centerVertical="true"
             android:text="PDF File Name"
             android:letterSpacing="0.02"
@@ -39,6 +39,16 @@
             android:layout_marginStart="8dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="6dp"/>
+
+        <ImageView
+            android:id="@+id/pdfimg_pap1"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_baseline_arrow_drop_down_24" />
 
     </RelativeLayout>
 

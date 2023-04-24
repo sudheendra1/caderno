@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <group android:checkableBehavior="single">\
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <group android:checkableBehavior="single">
 
 
 
@@ -10,10 +11,13 @@
 
     <group android:checkableBehavior="single">
 
+
         <item android:title="Questionares">
+
 
             <menu>
                 <item android:id="@+id/quiz_nav"
+
                     android:title="Quizlets"
                     android:icon="@drawable/ic_baseline_quiz_24"
                     app:showAsAction="never"/>
@@ -34,22 +38,26 @@
         <item android:title="Notes">
             <menu>
                 <item android:id="@+id/upload_own_notes_nav"
-                    android:title="Upload Notes For SelfView"
+                    android:title="Private View upload"
                     android:icon="@drawable/ic_baseline_picture_as_pdf_24"
                     app:showAsAction="never"/>
                 <item android:id="@+id/View_own_notes_nav"
-                    android:title="View Self Notes"
+                    android:title="View Private Notes"
                     android:icon="@drawable/ic_baseline_picture_as_pdf_24"
                     app:showAsAction="never"/>
 
                 <item android:id="@+id/upload_all_notes_nav"
-                    android:title="Share Notes With Everybody"
-                    android:icon="@drawable/ic_baseline_picture_as_pdf_24"
+                    android:title="Public View upload"
+                    android:icon="@drawable/ic_baseline_library_books_24"
                     app:showAsAction="never"/>
 
                 <item android:id="@+id/View_all_notes_nav"
-                    android:title="View All Notes"
-                    android:icon="@drawable/ic_baseline_picture_as_pdf_24"
+                    android:title="View Public Notes"
+                    android:icon="@drawable/ic_baseline_library_books_24"
+                    app:showAsAction="never"/>
+                <item android:id="@+id/View_books"
+                    android:title="Textbooks"
+                    android:icon="@drawable/ic_baseline_library_books_24"
                     app:showAsAction="never"/>
 
             </menu>
@@ -59,21 +67,25 @@
     <group android:checkableBehavior="single">
 
         <item android:title="Profile">
+
             <menu>
                 <item android:id="@+id/myprofilenav"
                     android:title="My Profile"
-                    android:icon="@drawable/ic_baseline_person_outline_24"
+                    android:icon="@drawable/ic_baseline_person_2_24"
+                    android:iconTint="#A6E3E9"
                     app:showAsAction="never"/>
 
 
-                <item android:id="@+id/delete_user_nav"
-                    android:title="Delete User"
-                    android:icon="@drawable/ic_baseline_delete_24"
-                    app:showAsAction="never"/>
+
 
                 <item android:id="@+id/logout_nav"
                     android:title="Logout"
                     android:icon="@drawable/ic_baseline_logout_24"
+                    app:showAsAction="never"/>
+
+                <item android:id="@+id/Contact"
+                    android:title="Contact Us"
+                    android:icon="@drawable/ic_baseline_contact_support_24"
                     app:showAsAction="never"/>
 
             </menu>

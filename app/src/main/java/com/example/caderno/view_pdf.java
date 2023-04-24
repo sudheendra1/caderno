@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -31,11 +33,16 @@ public class view_pdf extends AppCompatActivity {
     private DatabaseReference pRef;
     Query query;
     ProgressBar progressBar;
+    ImageView download;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pdf);
+        SharedPreferences.Editor editor1 = getSharedPreferences("data",MODE_PRIVATE).edit();
+        editor1.putBoolean("notopened",false);
+        editor1.apply();
+
         Swipetorefresh();
 
 
@@ -94,6 +101,20 @@ public class view_pdf extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+                holder.downlaod.setEnabled(false);
+
+                holder.downlaod.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setType("application/pdf");
+                        intent.setData(Uri.parse(model.getFileurl()));
+                        startActivity(intent);
+
+                    }
+                });
+
+
 
             }
 

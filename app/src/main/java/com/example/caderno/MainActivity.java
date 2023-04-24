@@ -5,9 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
@@ -24,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
   BiometricPrompt biometricPrompt;
   BiometricPrompt.PromptInfo promptInfo;
   ConstraintLayout fingerprint;
+  private static final String CHANNEL_ID = "My Channel";
+    private static final int NOTIFICATION_ID = 100;
+    Notification notification;
+    NotificationManagerCompat notificationManagerCompat;
+    private SharedPreferences sharedPreferences;
 
 
 
@@ -35,12 +50,52 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences=getSharedPreferences("data",MODE_PRIVATE);
+        boolean notopened =sharedPreferences.getBoolean("notopened",false);
+      /* Drawable drawable = ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_library_books_24,null);
+        BitmapDrawable bitmapDrawable= (BitmapDrawable) drawable;
+        Bitmap largeicon = bitmapDrawable.getBitmap();*/
+
+
+
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+
+            NotificationChannel channel= new NotificationChannel("My Channel","new channel",NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager= (NotificationManager) getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+
+        }
+        NotificationCompat.Builder builder= new NotificationCompat.Builder(this,"My Channel");
+                builder.setSmallIcon(R.drawable.whatsapp_image_2023_04_11_at_23_38_02);
+                       builder.setContentTitle("new message");
+                                builder.setContentText("A new PDF was just uploaded check it out");
+        notification=builder.build();
+        notificationManagerCompat=NotificationManagerCompat.from(this);
+
+        if(notopened){
+            notificationManagerCompat.notify(1,notification);
+        }*/
+
+
+        /*else{
+            notification=new Notification.Builder(this)
+                    .setLargeIcon(largeicon)
+                    .setSmallIcon(R.drawable.whatsapp_image_2023_04_11_at_23_38_02)
+                    .setContentText("A new PDF was just uploaded")
+                    .setSubText("mew message")
+                    .build();
+        }*/
+
+        Intent Backgroundservice =new Intent(this,pushnotificationfirebase.class);
+        startService(Backgroundservice);
         fingerprint=findViewById(R.id.mainlayout);
         ImageView cad= (ImageView) findViewById(R.id.caderno);
         TextView caderno = (TextView) findViewById(R.id.textView);
         TextView saifincreasework=(TextView)findViewById(R.id.whyudodis);
 
-        BiometricManager biometricManager= BiometricManager.from(this);
+       /* BiometricManager biometricManager= BiometricManager.from(this);
 
         switch (biometricManager.canAuthenticate())
         {
@@ -84,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         promptInfo=new BiometricPrompt.PromptInfo.Builder().setTitle("CADERNO").setDescription("Use Fingerprint To Login").setDeviceCredentialAllowed(true).build();
-        biometricPrompt.authenticate(promptInfo);
+        biometricPrompt.authenticate(promptInfo);*/
 
         cad.setOnClickListener(new View.OnClickListener() {
             @Override

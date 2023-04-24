@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class em4_quiz_mods extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,40 +25,6 @@ public class em4_quiz_mods extends AppCompatActivity {
         setContentView(R.layout.activity_em4_quiz_mods);
         Swipetorefresh();
 
-        listView= (ListView) findViewById(R.id.em_quiz_mod);
-
-        String[] subjects= {"Matrices","Complex Itegration"};
-        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,subjects){
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                View view = super.getView(position, convertView, parent);
-
-                TextView textView= (TextView) view.findViewById(android.R.id.text1);
-                return view;
-            }
-        };
-
-        listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = listView.getItemAtPosition(i).toString();
-
-                if (item.equals("Matrices")){
-                    startActivity(new Intent(em4_quiz_mods.this,matrices.class));
-
-                }
-                else if(item.equals("ComplexIntegration")){
-                    startActivity(new Intent(em4_quiz_mods.this,complex_integration.class));
-
-                }
-
-
-
-            }
-        });
 
     }
 

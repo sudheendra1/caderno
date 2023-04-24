@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,7 +32,7 @@ import java.io.File;
 public class upload_pdf extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    EditText edit;
+    TextView edit;
     Button uploadBTn;
 
     StorageReference storageReference;
@@ -130,6 +132,11 @@ public class upload_pdf extends AppCompatActivity {
                         databaseReference.child(databaseReference.push().getKey()).setValue(fileinModel);
                         Toast.makeText(upload_pdf.this, "File Uploaded Successfully!!", Toast.LENGTH_SHORT).show();
                         pd.dismiss();
+                        SharedPreferences.Editor editor1 = getSharedPreferences("data",MODE_PRIVATE).edit();
+                        editor1.putBoolean("notopened",true);
+                        editor1.apply();
+                        startActivity(new Intent(upload_pdf.this,mainpage.class));
+
 
                     }
                 }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {

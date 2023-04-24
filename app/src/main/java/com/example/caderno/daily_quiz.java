@@ -2,11 +2,13 @@ package com.example.caderno;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -45,30 +47,145 @@ public class daily_quiz extends AppCompatActivity {
         };
 
         listView.setAdapter(arrayAdapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String item = listView.getItemAtPosition(i).toString();
 
                 if (item.equals("Engineering Mathematics IV")){
-                    startActivity(new Intent(daily_quiz.this,em4_quiz_mods.class));
+                    AlertDialog.Builder builder= new AlertDialog.Builder(daily_quiz.this);
+
+                    builder.setMessage("Do you wish to view your previous scores or continue to the quiz");
+                    builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,em4_quiz_mods.class));
+                        }
+                    });
+
+                    builder.setNegativeButton("Score", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,em4score.class));
+                        }
+                    });
+                    AlertDialog alertDialog= builder.create();
+                    alertDialog.show();
+
 
                 }
                 else if(item.equals("Microprocessor")){
-                    startActivity(new Intent(daily_quiz.this,mp_quiz_mods.class));
+                    AlertDialog.Builder builder1= new AlertDialog.Builder(daily_quiz.this);
+
+                    builder1.setMessage("Do you wish to view your previous scores or continue to the quiz");
+                    builder1.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,mp_quiz_mods.class));
+                        }
+                    });
+
+                    builder1.setNegativeButton("Score", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,mpscore.class));
+                        }
+                    });
+                    AlertDialog alertDialog1= builder1.create();
+                    alertDialog1.show();
+
 
                 }
 
                 else if(item.equals("Analysis of Algorithms")){
-                    startActivity(new Intent(daily_quiz.this,aoa_quiz_mods.class));
+                    AlertDialog.Builder builder2= new AlertDialog.Builder(daily_quiz.this);
+
+                    builder2.setMessage("Do you wish to view your previous scores or continue to the quiz");
+                    builder2.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,aoa_quiz_mods.class));
+                        }
+                    });
+
+                    builder2.setNegativeButton("Score", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,Aoa_score.class));
+                        }
+                    });
+                    AlertDialog alertDialog2= builder2.create();
+                    alertDialog2.show();
+
+
 
                 }
                 else if(item.equals("Database Management Systems")){
-                    startActivity(new Intent(daily_quiz.this,dbms_mod1.class));
+                    AlertDialog.Builder builder3= new AlertDialog.Builder(daily_quiz.this);
+
+                    builder3.setMessage("Do you wish to view your previous scores or continue to the quiz");
+                    builder3.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,dbms_mod1.class));
+                        }
+                    });
+
+                    builder3.setNegativeButton("Score", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,dbmsscore.class));
+                        }
+                    });
+                    AlertDialog alertDialog3= builder3.create();
+                    alertDialog3.show();
+
 
                 }
                 else if(item.equals("Operating System")){
-                    startActivity(new Intent(daily_quiz.this,os_quiz_mods.class));
+                    AlertDialog.Builder builder4= new AlertDialog.Builder(daily_quiz.this);
+
+                    builder4.setMessage("Do you wish to view your previous scores or continue to the quiz");
+                    builder4.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,os_quiz_mods.class));
+                        }
+                    });
+
+                    builder4.setNegativeButton("Score", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,osscore.class));
+                        }
+                    });
+                    AlertDialog alertDialog4= builder4.create();
+                    alertDialog4.show();
+
+
+                }
+                else if(item.equals("Python")){
+                    AlertDialog.Builder builder5= new AlertDialog.Builder(daily_quiz.this);
+
+                    builder5.setMessage("Do you wish to view your previous scores or continue to the quiz");
+                    builder5.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(daily_quiz.this,Python.class));
+                        }
+                    });
+
+                    builder5.setNegativeButton("Score", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            startActivity(new Intent(daily_quiz.this,pythonscore.class));
+                        }
+                    });
+                    AlertDialog alertDialog5= builder5.create();
+                    alertDialog5.show();
+
 
                 }
 

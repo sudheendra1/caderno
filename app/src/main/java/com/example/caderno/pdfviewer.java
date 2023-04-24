@@ -24,7 +24,7 @@ public class pdfviewer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdfviewer);
-        Swipetorefresh();
+        /*Swipetorefresh();*/
         url=getIntent().getStringExtra("pdfurl");
         pdfView=findViewById(R.id.pdfView);
 
@@ -55,7 +55,7 @@ public class pdfviewer extends AppCompatActivity {
         }
     }
 
-    private void Swipetorefresh() {
+    /*private void Swipetorefresh() {
         swipeRefreshLayout=findViewById(R.id.refreshpullpdfviewer);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -67,5 +67,7 @@ public class pdfviewer extends AppCompatActivity {
             }
         });
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light,android.R.color.holo_red_light);
-    }
+    }*/
+
+
 }

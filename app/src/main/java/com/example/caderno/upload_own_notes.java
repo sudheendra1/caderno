@@ -14,6 +14,7 @@ import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,7 +33,7 @@ import java.io.File;
 public class upload_own_notes extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    private EditText edit_own;
+    private TextView edit_own;
     private Button uploadBTn_own;
     private FirebaseAuth mauth;
     private FirebaseUser firebaseUser;
@@ -131,7 +132,7 @@ public class upload_own_notes extends AppCompatActivity {
                         while (!uriTask.isComplete());
                         Uri uri = uriTask.getResult();
 
-                        FileinModel1 fileinModel = new FileinModel1(edit_own.getText().toString(), uri.toString());
+                        FileinModel2 fileinModel = new FileinModel2(edit_own.getText().toString(), uri.toString());
                         databaseReference.child(databaseReference.push().getKey()).setValue(fileinModel);
                         Toast.makeText(upload_own_notes.this, "File Uploaded Successfully!!", Toast.LENGTH_SHORT).show();
                         pd.dismiss();

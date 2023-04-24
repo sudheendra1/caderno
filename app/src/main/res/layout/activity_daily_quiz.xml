@@ -13,13 +13,17 @@
     android:id="@+id/daily"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".daily_quiz">
+    tools:context=".daily_quiz"
+    android:background="#D6F6FA">
 
     <ListView
         android:id="@+id/main_quiz"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp">
+        android:padding="5dp"
+
+
+        >
 
 
 

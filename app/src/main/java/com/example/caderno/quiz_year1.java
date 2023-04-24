@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,5 +36,12 @@ public class quiz_year1 extends AppCompatActivity {
         };
 
         listView.setAdapter(arrayAdapter);
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(quiz_year1.this,mainpage.class));
+
+
+
     }
 }

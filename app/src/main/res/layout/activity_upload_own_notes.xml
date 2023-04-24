@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     android:id="@+id/refreshpullupload_own">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".upload_own_notes">
@@ -20,6 +19,8 @@
             android:background="@drawable/background_upload"
             android:gravity="center"
             android:orientation="vertical"
+            android:textColor="#B9F3FC"
+            android:fontFamily="@font/josefin_sans_semibold"
             android:text="select a pdf file from your storage to uplod"
             android:textSize="35dp"
             android:padding="5dp"
@@ -30,22 +31,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
+        <TextView
             android:id="@+id/upload_pdf_et_own"
             android:layout_width="391dp"
             android:layout_height="67dp"
             android:background="@drawable/edit_text_back"
             android:ems="10"
-            android:fontFamily="@font/alike_angular"
-            android:hint="click twice to select file"
+            android:fontFamily="@font/josefin_sans_semibold"
+            android:hint="Browse file"
             android:gravity="center"
             android:includeFontPadding="false"
             android:inputType="textPersonName"
             android:letterSpacing="0.02"
             android:text=""
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textColorHint="@color/black"
-            android:textSize="16sp"
+            android:textSize="25sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.551"
@@ -57,18 +59,19 @@
             android:id="@+id/uploadbutton_own"
             android:layout_width="295dp"
             android:layout_height="52dp"
+
+            android:background="@drawable/button"
             android:includeFontPadding="false"
             android:letterSpacing="0.06"
-            android:text="UPLOAD FILE"
-            android:textSize="19sp"
 
+            android:text="UPLOAD FILE"
+            android:textColor="@color/white"
+            android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.577"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/upload_pdf_et"
-            app:layout_constraintVertical_bias="0.141"
-            android:background="@drawable/button"
-            android:textColor="@color/white"/>
+            app:layout_constraintTop_toBottomOf="@+id/upload_pdf_et_own"
+            app:layout_constraintVertical_bias="0.101" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

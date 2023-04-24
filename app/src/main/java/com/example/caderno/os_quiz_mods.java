@@ -25,40 +25,10 @@ public class os_quiz_mods extends AppCompatActivity {
         setContentView(R.layout.activity_os_quiz_mods);
         Swipetorefresh();
 
-        listView= (ListView) findViewById(R.id.os_quiz_mod);
-
-        String[] subjects= {"mod1","mod2"};
-        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,subjects){
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                View view = super.getView(position, convertView, parent);
-
-                TextView textView= (TextView) view.findViewById(android.R.id.text1);
-                return view;
-            }
-        };
-
-        listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = listView.getItemAtPosition(i).toString();
-
-                if (item.equals("mod1")){
-                    startActivity(new Intent(os_quiz_mods.this,os_mod1.class));
-
-                }
-                else if(item.equals("mod2")){
-                    startActivity(new Intent(os_quiz_mods.this,os_mod2.class));
-
-                }
 
 
 
-            }
-        });
+
     }
     @Override
     public void onBackPressed() {

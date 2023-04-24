@@ -1,26 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     android:id="@+id/refreshpullmpquizmods">
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mp_quiz_mods">
+    <RelativeLayout
 
-    <ListView
-        android:id="@+id/mp_quiz_mod"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp">
+        tools:context=".mp_quiz_mods"
+        android:background="@drawable/light_blue_to_dark_blue_gradient_iphone_8"
+        android:padding="24dp">
 
-    </ListView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalquestions3_mp"
+            android:text="Total Questions:"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textColor="#A4EBF3"
+            android:textStyle="italic"
+            />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/mp_q"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/answersmp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="question 1"
+            android:textAlignment="center"
+            android:textColor="#A4EBF3"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/answersmp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_qa"
+                android:text="ans a"
+                android:textColor="@color/white"
+                android:id="@+id/mp_ansa"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_qa"
+                android:layout_margin="5dp"
+                android:text="ans b"
+                android:textColor="@color/white"
+                android:id="@+id/mp_ansb"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_qa"
+                android:layout_margin="5dp"
+
+                android:text="ans c"
+                android:textColor="@color/white"
+                android:id="@+id/mp_ansc"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_qa"
+                android:layout_margin="5dp"
+
+                android:text="ans d"
+                android:textColor="@color/white"
+                android:id="@+id/mp_ansd"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/mp_submit"
+            android:text="Submit"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/submitbutton_qa"
+            android:layout_below="@id/answersmp"
+            android:layout_marginTop="45dp"
+            android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

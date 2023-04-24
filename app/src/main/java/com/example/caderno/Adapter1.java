@@ -2,6 +2,7 @@ package com.example.caderno;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,11 +12,16 @@ public class Adapter1 extends RecyclerView.ViewHolder implements View.OnClickLis
     public Itemclicklistener listener1;
     private final Context context1;
     public TextView pdftitle1;
+    public ImageView download;
+
 
     public Adapter1(@NonNull View itemView1) {
         super(itemView1);
         context1= itemView1.getContext();
-        pdftitle1 = itemView1.findViewById(R.id.pdftv);
+        pdftitle1 = itemView1.findViewById(R.id.pdftv1);
+        download=itemView1.findViewById(R.id.pdfimg_pap1);
+
+
     }
 
     @Override
