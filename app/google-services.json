@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "531702191365",
+    "firebase_url": "https://caderno1-1a252-default-rtdb.firebaseio.com",
+    "project_id": "caderno1-1a252",
+    "storage_bucket": "caderno1-1a252.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531702191365:android:658a8cc0e5163c34fe536c",
+        "android_client_info": {
+          "package_name": "com.example.caderno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531702191365-es0nnp1a7p1ed4pa637nc437mk9tmsjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjlFF-jsYfUEHcQvzCvuZ4UuHdqiqFj5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531702191365-es0nnp1a7p1ed4pa637nc437mk9tmsjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531702191365:android:479d8e8842dccc41fe536c",
+        "android_client_info": {
+          "package_name": "com.example.caderno1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531702191365-es0nnp1a7p1ed4pa637nc437mk9tmsjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjlFF-jsYfUEHcQvzCvuZ4UuHdqiqFj5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531702191365-es0nnp1a7p1ed4pa637nc437mk9tmsjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
