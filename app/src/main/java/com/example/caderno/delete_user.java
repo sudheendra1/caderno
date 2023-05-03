@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
@@ -256,7 +257,46 @@ try {
         catch (Exception e){
 
         }
+        try{
+            DatabaseReference databaseReference3= FirebaseDatabase.getInstance().getReference("Test scores");
+            databaseReference3.child(uid).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Log.d(TAG,"onSuccess:Test scores Deleted");
 
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG,e.getMessage());
+                    Toast.makeText(delete_user.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        } catch (Exception e){
+
+        }
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("testno",0);
+        editor.apply();
+
+        SharedPreferences preferencesdb = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editordb = preferencesdb.edit();
+        editordb.putInt("testnodb",0);
+        editordb.apply();
+
+        SharedPreferences preferencesmp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editormp = preferencesmp.edit();
+        editormp.putInt("testnomp",0);
+        editormp.apply();
+
+        SharedPreferences preferencespy = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editorpy = preferencespy.edit();
+        editorpy.putInt("testnop",0);
+        editorpy.apply();
 
     }
 }

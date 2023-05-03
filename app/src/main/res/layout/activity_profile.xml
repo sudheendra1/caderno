@@ -23,7 +23,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#37306B">
+            android:background="#372B8F">
             <include layout="@layout/toolbar"/>
 
             <ImageView
@@ -31,14 +31,13 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_centerInParent="true"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintHorizontal_bias="0.184"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_bias="0.183"
-                app:srcCompat="@drawable/ic_baseline_person_outline_24_white"
-                />
+                app:srcCompat="@drawable/ic_baseline_person_outline_24_white" />
 
             <TextView
                 android:id="@+id/tvwelcome"
